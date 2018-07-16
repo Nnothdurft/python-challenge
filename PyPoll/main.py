@@ -32,3 +32,5 @@ candidates[3] + ": " + "{:.3f}".format((votes[3]/count)*100) + "% (" + str(votes
 "Winner: " + candidates[0] +  "\n" + 
 "-------------------------")
 print(results)
+with open("Results.txt", 'w') as txtFile:
+    txtFile.write(results)
