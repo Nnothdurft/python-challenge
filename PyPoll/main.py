@@ -1,6 +1,5 @@
 import csv
 import array
-from operator import attrgetter
 
 count = 0
 candidates = []
