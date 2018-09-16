@@ -1,0 +1,31 @@
+body{
+    background-color: rgb(228, 228, 228);
+}
+.navbar-brand{
+    color: white;
+    padding: 10px;
+}
+hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid gray;
+    margin: 1em 0;
+    margin-bottom: 60px;
+    padding: 0;
+}
+h1{
+    font-size: 48px;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+p{
+    padding-left: 25px;
+    font-size: 24px;
+}
+@media(max-width:520px){
+    .col-md-6{
+        left:0;width:100%;
+    }
+}
