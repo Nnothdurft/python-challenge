@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Data</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Latest Mars News</h2>
+            <h2>{{mars.Headline}}</h2>
+            <h4>{{mars.Body}}</h4>
+        </div>
+    </div>
+    <div class="row" id="Mars-Image">
+      <div class="col-md-7">
+        <h2 class="heading">Featured Mars Image</h2>
+        <img style="height:700px;max-width:1000px" src="{{mars.Featured}}">
+      </div>
+      <div class="col-md-5 boxed" id="Mars-Facts">
+        <h3>Current Weather on Mars</h3>
+        <h4>{{mars.Weather}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <img style="height:500px;max-width:500px" src="{{mars.img_url0}}">
+        <h3>{{mars.title0}}</h3>
+        <img style="height:500px;max-width:500px" src="{{mars.img_url2}}">
+        <h3>{{mars.title2}}</h3>
+      </div>
+      <div class="col-md-6">
+        <img style="height:500px;max-width:500px" src="{{mars.img_url1}}">
+        <h3>{{mars.title1}}</h3>
+        <img style="height:500px;max-width:500px" src="{{mars.img_url3}}">
+        <h3>{{mars.title3}}</h3>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
