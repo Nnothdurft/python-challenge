@@ -23,11 +23,53 @@
     <div class="row" id="Mars-Image">
       <div class="col-md-7">
         <h2 class="heading">Featured Mars Image</h2>
-        <img style="height:700px;max-width:1000px" src="{{mars.Featured}}">
+        <img style="height:450px;max-width:700px" src="{{mars.Featured}}">
       </div>
-      <div class="col-md-5 boxed" id="Mars-Facts">
+      <div class="col-md-5" id="Mars-Facts">
         <h3>Current Weather on Mars</h3>
         <h4>{{mars.Weather}}</h4>
+            <table border="1" class="dataframe">
+              <thead>
+              <tr>
+                <th>Description</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>            
+              <tr>
+                <td width="150px">{{mars.Description_0}}</td>
+                <td width="150px">{{mars.Value_0}}</td>
+              </tr>
+              <tr>
+                  <td>{{mars.Description_1}}</td>
+                  <td>{{mars.Value_1}}</td>
+                </tr>
+                <tr>
+                    <td>{{mars.Description_2}}</td>
+                    <td>{{mars.Value_2}}</td>
+                  </tr>
+                  <tr>
+                      <td>{{mars.Description_3}}</td>
+                      <td>{{mars.Value_3}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{mars.Description_4}}</td>
+                        <td>{{mars.Value_4}}</td>
+                      </tr>
+                      <tr>
+                          <td>{{mars.Description_5}}</td>
+                          <td>{{mars.Value_5}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{mars.Description_6}}</td>
+                            <td>{{mars.Value_6}}</td>
+                          </tr>
+                          <tr>
+                              <td>{{mars.Description_7}}</td>
+                              <td>{{mars.Value_7}}</td>
+                            </tr>
+                          </tbody>
+            </table>
       </div>
     </div>
     <div class="row">
