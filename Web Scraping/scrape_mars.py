@@ -14,6 +14,7 @@ def marsNews():
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
     mars_news = {}
+    time.sleep(2)
     mars_news["Headline"] = soup.find("div", class_="content_title", attrs="href").get_text()
     mars_news["Body"] = soup.find("div", class_="article_teaser_body").get_text()
     browser.quit()
@@ -41,7 +42,6 @@ def marsWeather():
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
     tweets = soup.find_all("p", class_="TweetTextSize")
-    count = 0
     for tweet in tweets:
         if tweet.text.find("Sol") > -1:
             mars_weather = {"Weather": tweet.text}
@@ -53,7 +53,11 @@ def marsFacts():
     url = "https://space-facts.com/mars/"
     df = pd.read_html(url, attrs={"id": "tablepress-mars"})
     new_df = df[0]
-    return new_df.to_html()
+    new_df.rename(columns={0: "Desc", 1: "Values"}, inplace=True)
+    descr = {}
+    for x in range(len(new_df["Desc"])):
+        descr.update({"Description_" +str(x): new_df.Desc[x], "Value_" +str(x): new_df.Values[x]})
+    return (descr)
 
 def marsHemispheres():
     hemisphere_image_urls = {}
@@ -67,7 +71,6 @@ def marsHemispheres():
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
     titles = soup.find_all("h3")
-    links = soup.find_all("a", class_="itemLink product-item", attrs="href")
     for title in titles:
         titleOnly.append(title.text)
     for title in titleOnly:
@@ -97,5 +100,6 @@ def scrape():
     mars.update(marsNews())
     mars.update(jpl())
     mars.update(marsWeather())
+    mars.update(marsFacts())
     mars.update(marsHemispheres())
     return mars
