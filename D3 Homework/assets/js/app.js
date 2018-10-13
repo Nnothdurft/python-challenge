@@ -34,10 +34,23 @@ function renderAxes(newXScale, xAxis){
     return xAxis;
 }
 
-function renderCircles(circlesGroup, newXScale, chosenXaxis){
+function renderCircles(circlesGroup, newXScale, chosenXaxis, circleLabels){
+    let offset;
+    if(chosenXaxis === "income"){
+        offset = 800;
+    }
+    else if(chosenXaxis === "poverty"){
+        offset = .23;
+    }
+    else{
+        offset = .33;
+    }
     circlesGroup.transition()
         .duration(500)
         .attr("cx", d => newXScale(d[chosenXaxis]));
+    circleLabels.transition()
+        .duration(500)
+        .attr("x", d => newXScale(d[chosenXaxis] - offset));
     return circlesGroup;
 }
 
@@ -159,6 +172,20 @@ d3.csv("/assets/data/data.csv").then(function(data) {
         .classed("axis-text", true)
         .classed("inactive", true)
         .text("Smokes (%)");
+    let circleLabels = chartgroup.append("text")
+        .selectAll("tspan")
+        .data(data)
+        .enter()
+        .append("tspan")
+        .attr("x", function(data){
+            return xLinearScale(data[chosenXaxis] - .23);
+        })
+        .attr("y", function(data){
+            return yLinearScale(data[chosenYaxis] - .3);
+        })
+        .text(function(data){
+            return data.abbr;
+        });
     circlesGroup = updateToolTip(chosenXaxis, circlesGroup);
     xLabelsgroup.selectAll("text")
         .on("click", function(){
@@ -167,7 +194,7 @@ d3.csv("/assets/data/data.csv").then(function(data) {
                 chosenXaxis = value;
                 xLinearScale = xScale(data, chosenXaxis);
                 xAxis = renderAxes(xLinearScale, xAxis);
-                circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXaxis);
+                circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXaxis, circleLabels);
                 circlesGroup = updateToolTip(chosenXaxis, circlesGroup);
                 if(chosenXaxis === "poverty"){
                     povertyLabel
